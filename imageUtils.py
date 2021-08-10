@@ -120,18 +120,18 @@ def SaveImgFromArray(img):
     # takes an image object and saves it to images folder with random hash as name
     try:
         im = Image.fromarray(img.astype("uint8"))
-        im.save("images/" + "%x" % random.getrandbits(128) + ".jpeg")   
+        im.save("images/" + "%x" % random.getrandbits(128) + ".jpg")   
     except Exception as ex:
         print(ex)
 
 def imgToArray(img) -> np.array:
-    decoded = cv2.imdecode(np.frombuffer(img, np.uint8), -1)
-    # print(img[ : , : [2]])
-    SaveImgFromArray(decoded)
+    decoded = cv2.imdecode( np.frombuffer(img, np.uint8), -1)
+    imageRGB = cv2.cvtColor(decoded, cv2.COLOR_BGR2RGB)
+    SaveImgFromArray(imageRGB)
 
-def RGB2BGR(img) -> np.array:
+def RGB2BGR(img: np.array) -> np.array:
     # converts RGB encoded image to BGR (cv2 spec) encoded image    
-
+    return np.flip(img, axis = 2 )
 # if __name__ == "__main__": 
 #     img = Image.open("sample_5184×3456.bmp")
 #     img = np.array(img)
