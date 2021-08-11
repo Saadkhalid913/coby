@@ -1,9 +1,14 @@
 import './index.css';
-import Grid from "./components/grid"
 import "./index.css"
-
+import MatrixBox from './components/matrixBox';
+import ImageBox from './components/ImageBox';
 function App() {
-  return ( <Grid gridSize={21} />)
+  return (
+    <div>
+      <MatrixBox gridSize={5}/>
+      <ImageBox />
+    </div>
+  )
 }
 
 export default App;
