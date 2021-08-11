@@ -22,15 +22,15 @@ def imgToArray(img) -> np.array:
     imageRGB = cv2.cvtColor(decoded, cv2.COLOR_BGR2RGB)
     return imageRGB
 
-def imgToBytes(img) -> bytearray:
-    img = Image.fromarray(img.astype("uint8"))
-    with BytesIO() as output:
-        img.save(output, 'png')
-        data = output.getvalue()
-    temp_file = NamedTemporaryFile()
-    copyfileobj(img, temp_file)
-    temp_file.seek(0,0)
-    return temp_file
+# def imgToBytes(img) -> bytearray:
+#     img = Image.fromarray(img.astype("uint8"))
+#     with BytesIO() as output:
+#         img.save(output, 'png')
+#         data = output.getvalue()
+#     temp_file = NamedTemporaryFile()
+#     copyfileobj(img, temp_file)
+#     temp_file.seek(0,0)
+#     return temp_file
 
 def ApplyFiter(img: np.array, matrix: np.array, layer: int):
 

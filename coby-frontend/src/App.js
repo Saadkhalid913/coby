@@ -1,8 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
+import './index.css';
+import Grid from "./components/grid"
+import "./index.css"
 
 function App() {
-  return <h1>Hello world</h1>
+  return ( <Grid gridSize={21} />)
 }
 
 export default App;
