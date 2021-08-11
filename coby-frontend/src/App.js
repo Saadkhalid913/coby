@@ -5,8 +5,7 @@ import ImageBox from './components/ImageBox';
 function App() {
   return (
     <div>
-      <MatrixBox gridSize={5}/>
-      <ImageBox />
+      
     </div>
   )
 }

@@ -7,5 +7,4 @@ const GridSelector = ({onChange, value, min, max}) => {
         </div>
     )
 }
-
 export default GridSelector
