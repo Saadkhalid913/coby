@@ -2,9 +2,36 @@ import os
 import numpy as np
 from PIL import Image
 import random
-import io
-import base64
 import cv2
+from io import BytesIO
+from tempfile import NamedTemporaryFile
+from shutil import copyfileobj
+
+def SaveImgFromArray(img):
+    # takes an image object and saves it to images folder with random hash as name
+    try:
+        im = Image.fromarray(img.astype("uint8"))
+        imgpath="images/" + "%x" % random.getrandbits(128) + ".png"
+        im.save(imgpath)
+        return imgpath   
+    except Exception as ex:
+        print(ex)
+
+def imgToArray(img) -> np.array:
+    decoded = cv2.imdecode( np.frombuffer(img, np.uint8), -1)
+    imageRGB = cv2.cvtColor(decoded, cv2.COLOR_BGR2RGB)
+    return imageRGB
+
+def imgToBytes(img) -> bytearray:
+    img = Image.fromarray(img.astype("uint8"))
+    with BytesIO() as output:
+        img.save(output, 'png')
+        data = output.getvalue()
+    temp_file = NamedTemporaryFile()
+    copyfileobj(img, temp_file)
+    temp_file.seek(0,0)
+    return temp_file
+
 def ApplyFiter(img: np.array, matrix: np.array, layer: int):
 
   # takes an array or PIL image object and
@@ -31,7 +58,7 @@ def ApplyFiter(img: np.array, matrix: np.array, layer: int):
     return np.expand_dims(img, axis=2)
 
 
-def UseFillMatrices(img, rValue=1, gValue=1, bValue=1, MatrixSize=10):
+def ColorFactors(img, rValue=1, gValue=1, bValue=1, MatrixSize=10):
     matrixR = np.full((MatrixSize, MatrixSize), rValue)
     matrixG = np.full((MatrixSize, MatrixSize), gValue)
     matrixB = np.full((MatrixSize, MatrixSize), bValue)
@@ -43,7 +70,7 @@ def UseFillMatrices(img, rValue=1, gValue=1, bValue=1, MatrixSize=10):
     return img
 
 
-def GreyScale(img):
+def Greyscale(img):
     # converts an np image to greyscale
     rows = img.shape[0]
     cols = img.shape[1]
@@ -85,6 +112,20 @@ def Convolution(img: np.array, matrix: np.array, layer: int):
 
     return np.expand_dims(targetImage, axis=2)
 
+def Convolution3D(img: np.array, matrix: np.array) -> np.array:
+    R = Convolution(img, matrix, layer=0)
+    G = Convolution(img, matrix, layer=1)
+    B = Convolution(img, matrix, layer=2)
+    return np.concatenate((R,G,B), axis=2)
+
+
+
+
+
+
+
+# These functions are experimental and do not work well
+
 
 def compress(img: np.array, factor: int, layer: int):
     # compresses given layer of an image by some factor
@@ -114,26 +155,3 @@ def CompressImage(img: np.array, factor: int):
     print(img.shape)
 
     return img
-
-
-def SaveImgFromArray(img):
-    # takes an image object and saves it to images folder with random hash as name
-    try:
-        im = Image.fromarray(img.astype("uint8"))
-        im.save("images/" + "%x" % random.getrandbits(128) + ".jpg")   
-    except Exception as ex:
-        print(ex)
-
-def imgToArray(img) -> np.array:
-    decoded = cv2.imdecode( np.frombuffer(img, np.uint8), -1)
-    imageRGB = cv2.cvtColor(decoded, cv2.COLOR_BGR2RGB)
-    SaveImgFromArray(imageRGB)
-
-def RGB2BGR(img: np.array) -> np.array:
-    # converts RGB encoded image to BGR (cv2 spec) encoded image    
-    return np.flip(img, axis = 2 )
-# if __name__ == "__main__": 
-#     img = Image.open("sample_5184×3456.bmp")
-#     img = np.array(img)
-#     img = CompressImage(img, 64)
-#     SaveImgFromArray(img)

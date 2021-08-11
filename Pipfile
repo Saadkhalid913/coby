@@ -8,6 +8,7 @@ numpy = "*"
 flask = "*"
 pillow = "*"
 opencv-python = "*"
+werkzeug = "*"
 
 [dev-packages]
 
