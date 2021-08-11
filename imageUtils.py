@@ -118,6 +118,12 @@ def Convolution3D(img: np.array, matrix: np.array) -> np.array:
     B = Convolution(img, matrix, layer=2)
     return np.concatenate((R,G,B), axis=2)
 
+def Filter3D(img: np.array, matrix: np.array) -> np.array:
+    R = ApplyFiter(img, matrix, layer=0)
+    G = ApplyFiter(img, matrix, layer=1)
+    B = ApplyFiter(img, matrix, layer=2)
+    return np.concatenate((R,G,B), axis=2)
+
 
 
 
