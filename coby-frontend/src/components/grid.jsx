@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-
+import GridTile from './gridTile'
 const Grid = ({ gridSize }) => {
     const [size, setSize]= useState(3)
     useEffect(() => {
@@ -9,7 +9,7 @@ const Grid = ({ gridSize }) => {
     const tiles = []
     for (let i = 0; i < size; i++) {
         for (let j = 0; j < size; j++) {
-            tiles.push(<div key={`grid-tile${i}-${j}`} className = "matrix-grid-tile"></div>)
+            tiles.push(<GridTile key={`grid-tile${i}-${j}`} onChange = {(e, i) => console.log(e,i)} id = {[i,j]} className = "matrix-grid-tile" />)
         }
     }
 

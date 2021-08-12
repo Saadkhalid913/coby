@@ -1,12 +1,9 @@
 import './index.css';
 import "./index.css"
-import MatrixBox from './components/matrixBox';
-import ImageBox from './components/ImageBox';
+import MainComponent from "./components/MainComponent"
 function App() {
   return (
-    <div>
-      
-    </div>
+    <MainComponent />
   )
 }
 

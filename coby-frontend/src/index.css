@@ -6,15 +6,52 @@
 
 .matrix-grid {
   display: grid;
-  width: 1000px;
-  height: 1000px;
-
+  width:100%;
+  height: 100%;
+  height: 30vw;
+  width: 30vw;
+  justify-self: center;
 }
 
 .matrix-grid-tile  {
   width: 100%;
   height: 100%;
-  background-color:red;
-  border:3px solid black;
+  border:2px solid black; 
+  text-align: center;
+  font-size: 3rem;
+}
+
+.main-component-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  border:  2px solid blue;
+}
+
+.matrix-box {
+  display:flex;
+  flex-direction: column;
+  width:50%;
+  height: 80%;
+  border: 1px solid black;
+  align-content: center;
+  justify-content: center;
   
 }
+.grid-selector {
+  display:flex;
+  flex-direction: row;
+  width: 25%;
+  border: 1px solid black;
+  position: relative;
+  justify-content: space-evenly;
+  top: 10%;
+}
+
+.grid-selector > * {
+  width: 30%;
+  text-align: center;
+}
+
