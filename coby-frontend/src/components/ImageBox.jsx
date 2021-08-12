@@ -1,11 +1,14 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import ImageContext from '../contexts/imageContext'
 
 const ImageBox = ({imgSrc, onImgChange}) => {
+    const {src, setImage}  = useContext(ImageContext)
+
     return (
         <div className = "img-box-wrapper">
             <div className = "img-box">
-                <img alt="" src = {imgSrc} />
-                <input  type = "file" onChange={e => {console.log(e.target.files[0])}}/>
+                <img alt="" src = {src ? URL.createObjectURL(src) : ""} />
+                <input  type = "file" onChange={e => {setImage(e.target.files[0])}}/>
             </div>
         </div>
     )

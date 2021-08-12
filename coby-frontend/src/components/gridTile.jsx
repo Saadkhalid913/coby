@@ -1,8 +1,9 @@
-import React, { Component, useState, useEffect } from 'react'
+import React, { useContext } from 'react'
+import MatrixContext from '../contexts/matrixContext'
 
 const GridTile = ({ onChange, defaultValue, id }) => {
-    return <input type="number" className = "matrix-grid-tile"  onChange = {e => onChange(e.target.value, id)} />
-
+    const {setMatrixValue} = useContext(MatrixContext)
+    return <input type="number" className = "matrix-grid-tile"  onChange = {e => setMatrixValue(e.target.value, id[0], id[1])} />
 }
  
 

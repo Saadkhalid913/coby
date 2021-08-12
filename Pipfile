@@ -9,6 +9,7 @@ flask = "*"
 pillow = "*"
 opencv-python = "*"
 werkzeug = "*"
+flask-cors = "*"
 
 [dev-packages]
 

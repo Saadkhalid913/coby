@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import GridTile from './gridTile'
 const Grid = ({ gridSize }) => {
-    const [size, setSize]= useState(3)
+    const [size, setSize]= useState(2)
     useEffect(() => {
-        setSize(gridSize || 3)
+        setSize(gridSize || 2)
     }, [gridSize])
 
     const tiles = []

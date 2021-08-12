@@ -1,10 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Grid from './grid'
 import GridSelector from './gridSelector'
-const MatrixBox = (props) => {
-
-    const [gridSize, setGridSize] = useState(2)
-
+const MatrixBox = ({ gridSize, setGridSize}) => {
     return (
     <div className = "matrix-box">
         <Grid gridSize = {gridSize}/>
