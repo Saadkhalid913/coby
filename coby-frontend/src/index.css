@@ -2,17 +2,57 @@
   margin: 0 auto;
   box-sizing: border-box;
   padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+
+
+.main-component-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  height: 100%
+}
+
+.main-component-wrapper > div {
+  height: 100%;
+  width: 45%;
+}
+
+.matrix-box {
+  display:flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+
+
+.grid-selector {
+  display:flex;
+  flex-direction: row;
+  width: 25%;
+  margin-top: 2rem;
+  border: 1px solid black;
+  justify-content: space-evenly;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-selector > * {
+  width: 30%;
+  text-align: center;
+}
+
 
 .matrix-grid {
   display: grid;
-  width:100%;
-  height: 100%;
-  height: 30vw;
-  width: 30vw;
+  height:50vh;
+  width:50vh;
   justify-self: center;
+  margin: 1rem;
 }
-
 .matrix-grid-tile  {
   width: 100%;
   height: 100%;
@@ -21,37 +61,67 @@
   font-size: 3rem;
 }
 
-.main-component-wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100vw;
+
+.main-content-wrapper {
+  display:flex;
   height: 100vh;
-  border:  2px solid blue;
-}
-
-.matrix-box {
-  display:flex;
+  width: 100vw;
   flex-direction: column;
-  width:50%;
-  height: 80%;
-  border: 1px solid black;
-  align-content: center;
+  align-items: center;
   justify-content: center;
-  
-}
-.grid-selector {
-  display:flex;
-  flex-direction: row;
-  width: 25%;
+  padding: 4rem;
   border: 1px solid black;
-  position: relative;
-  justify-content: space-evenly;
-  top: 10%;
+
 }
 
-.grid-selector > * {
-  width: 30%;
-  text-align: center;
+.img-box-wrapper {
+  border: 2px solid blue;
+  display: flex;
+
 }
 
+.img-box > img {
+  max-width: 80%;
+  max-height: 80%;
+  border: 1px solid black;
+
+}
+.img-box {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+
+}
+
+
+
+
+
+.loading-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  background-color: white;
+  font-size: 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.loading-box > img {
+  height: 15vh;
+  padding: 1.5rem;
+}
+
+
+.btn {
+  height: min(4rem, 36px);
+  width: min(8rem, 72px);
+  margin: 0.5rem;
+
+}

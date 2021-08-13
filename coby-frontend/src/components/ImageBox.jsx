@@ -8,7 +8,7 @@ const ImageBox = ({imgSrc, onImgChange}) => {
         <div className = "img-box-wrapper">
             <div className = "img-box">
                 <img alt="" src = {src ? URL.createObjectURL(src) : ""} />
-                <input  type = "file" onChange={e => {setImage(e.target.files[0])}}/>
+                <input name="file-dropbox" type = "file" accept=".png, .jpeg, .jpg" onChange={e => {setImage(e.target.files[0])}}/>
             </div>
         </div>
     )

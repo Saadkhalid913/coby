@@ -112,6 +112,8 @@ def Convolution(img: np.array, matrix: np.array, layer: int):
 
     return np.expand_dims(targetImage, axis=2)
 
+  
+
 def Convolution3D(img: np.array, matrix: np.array) -> np.array:
     R = Convolution(img, matrix, layer=0)
     G = Convolution(img, matrix, layer=1)

@@ -3,12 +3,16 @@ import ImageBox from './ImageBox'
 import MatrixBox from './matrixBox'
 import MatrixContext from "../contexts/matrixContext"
 import ImageContext from "../contexts/imageContext"
+import LoadingIcon from "./LoadingIcon.gif"
+
 export default class MainComponent extends Component {
     state = {
         gridSize: 2,
         matrix: [],
         image: undefined,
-        original_image: undefined
+        original_image: undefined,
+        loading: false,
+        mode: "conv"
     }
 
     componentDidMount() {
@@ -16,6 +20,7 @@ export default class MainComponent extends Component {
     }
 
     render() {
+        if (this.state.loading) return <div className = "loading-box"><img src = {LoadingIcon} alt="Loading" />Loading...</div>
         return (
             <ImageContext.Provider value={{src: this.state.image, setImage: this.setImage}}>
                 <MatrixContext.Provider value={{ matrix: this.state.matrix, setMatrixValue:  this.setMatrixValue}}>
@@ -24,8 +29,8 @@ export default class MainComponent extends Component {
                             <MatrixBox gridSize={this.state.gridSize} setGridSize ={this.setGridSize}/>
                             <ImageBox />
                         </div>
-                        <button onClick = {this.submitImage}>Submit</button>
-                        <button onClick = {this.revertImage}>Revert</button>
+                        <button className = "btn" onClick = {this.submitImage}>Submit</button>
+                        <button className = "btn" onClick = {this.revertImage}>Revert</button>
                     </div>
                 </MatrixContext.Provider>
             </ImageContext.Provider>
@@ -62,13 +67,14 @@ export default class MainComponent extends Component {
         imageform.append("image", this.state.image)
         imageform.append("matrix", this.state.matrix)
         imageform.append("size", this.state.gridSize)
-        imageform.append("mode",  "conv")
+        imageform.append("mode",  "filter")
+        this.setState({loading: true})
+        console.log("Loading")
         const data  = await fetch("http://localhost:5000/upload", {
             mode: "cors",
             method: "post",
             body: imageform
         })
-        console.log(data)
         const data1 = JSON.parse(JSON.stringify(data))
         try {
             const body = await data1.json()
@@ -78,6 +84,8 @@ export default class MainComponent extends Component {
             const imageData = await data.blob()
             this.setState({image: imageData})
         }
+        this.setState({loading: false})
+        console.log("Done loading")
     }
 
     setImage = (image) => {
