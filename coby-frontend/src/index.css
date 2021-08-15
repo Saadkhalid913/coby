@@ -75,15 +75,15 @@
 }
 
 .img-box-wrapper {
-  border: 2px solid blue;
   display: flex;
-
 }
 
 .img-box > img {
   max-width: 80%;
   max-height: 80%;
   border: 1px solid black;
+  margin: 2rem;
+  
 
 }
 .img-box {
@@ -95,9 +95,6 @@
   padding: 1rem;
 
 }
-
-
-
 
 
 .loading-box {
