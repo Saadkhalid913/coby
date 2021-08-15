@@ -5,7 +5,8 @@ import random
 import cv2
 from io import BytesIO
 from tempfile import NamedTemporaryFile
-from shutil import copyfileobj
+from shutil import copyfileobj 
+import math
 
 def SaveImgFromArray(img):
     # takes an image object and saves it to images folder with random hash as name
@@ -90,6 +91,29 @@ def Greyscale(img):
     return np.concatenate((TargetImg, TargetImg, TargetImg), axis=2)
 
 
+# def Convolution(img: np.array, matrix: np.array, layer: int):
+#     # applys some matrix convolution to a given image layer and returns result
+#     n = len(matrix)
+#     rows = img.shape[0]
+#     cols = img.shape[1]
+
+#     AdjusmentRows = rows % n
+#     AdjusmentCols = cols % n
+
+#     img = img[:, :, [layer]]
+#     img = np.squeeze(img, axis=2)  # removing 2nd dim of length 1
+
+#     targetImage = np.zeros(img.shape)
+
+#     for i in range(len(img) - n):
+#         for j in range(len(img[0]) - n):
+#             ElementProduct = np.multiply(img[i: i + n, j: j + n],  matrix)
+#             WeightedSum = np.sum(ElementProduct) / n**2
+#             targetImage[i][j] = WeightedSum
+
+#     return np.expand_dims(targetImage, axis=2)
+
+
 def Convolution(img: np.array, matrix: np.array, layer: int):
     # applys some matrix convolution to a given image layer and returns result
     n = len(matrix)
@@ -104,13 +128,15 @@ def Convolution(img: np.array, matrix: np.array, layer: int):
 
     targetImage = np.zeros(img.shape)
 
-    for i in range(len(img) - n):
+    for i in range(len(img) - n ):
         for j in range(len(img[0]) - n):
-            ElementProduct = np.multiply(img[i: i + n, j: j + n],  matrix)
-            WeightedSum = np.sum(ElementProduct) / n**2
-            targetImage[i][j] = WeightedSum
+            ElementWiseProduct = np.multiply(img[i : i + n, j : j + n], matrix) 
+            weightedSum = np.sum(ElementWiseProduct) // n ** 2 
+            targetImage[i + n // 2][j + n // 2] = weightedSum
 
     return np.expand_dims(targetImage, axis=2)
+
+
 
   
 

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import MatrixContext from '../contexts/matrixContext'
 import GridTile from './gridTile'
 const Grid = ({ gridSize }) => {
     const [size, setSize]= useState(2)
@@ -6,10 +7,11 @@ const Grid = ({ gridSize }) => {
         setSize(gridSize || 2)
     }, [gridSize])
 
+    const {matrix} = useContext(MatrixContext)
     const tiles = []
-    for (let i = 0; i < size; i++) {
-        for (let j = 0; j < size; j++) {
-            tiles.push(<GridTile key={`grid-tile${i}-${j}`} onChange = {(e, i) => console.log(e,i)} id = {[i,j]} className = "matrix-grid-tile" />)
+    for (let i = 0; i < matrix.length; i++) {
+        for (let j = 0; j < matrix.length; j++) {
+            tiles.push(<GridTile key={`grid-tile${i}-${j}`}  id = {[i,j]} className = "matrix-grid-tile" />)
         }
     }
 

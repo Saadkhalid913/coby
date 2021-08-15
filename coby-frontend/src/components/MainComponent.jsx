@@ -12,7 +12,7 @@ export default class MainComponent extends Component {
         image: undefined,
         original_image: undefined,
         loading: false,
-        mode: "conv"
+        mode: "Convolution"
     }
 
     componentDidMount() {
@@ -26,11 +26,13 @@ export default class MainComponent extends Component {
                 <MatrixContext.Provider value={{ matrix: this.state.matrix, setMatrixValue:  this.setMatrixValue}}>
                     <div className = "main-content-wrapper">
                         <div className = "main-component-wrapper">
-                            <MatrixBox gridSize={this.state.gridSize} setGridSize ={this.setGridSize}/>
+                            <MatrixBox gridSize={this.state.gridSize} setGridSize ={this.setGridSize} onModeChange={this.onModeChange}/>
                             <ImageBox />
                         </div>
-                        <button className = "btn" onClick = {this.submitImage}>Submit</button>
-                        <button className = "btn" onClick = {this.revertImage}>Revert</button>
+                       <div className = "main-button-wrapper">
+                            <button className = "btn" onClick = {this.submitImage}>Submit</button>
+                            <button className = "btn" onClick = {this.revertImage}>Revert</button>
+                       </div>
                     </div>
                 </MatrixContext.Provider>
             </ImageContext.Provider>
@@ -54,6 +56,10 @@ export default class MainComponent extends Component {
         return matrix
     }
 
+    onModeChange = (mode) => {
+        this.setState({ mode })
+    }
+
     setMatrixValue = (value, i, j) => {
         const oldMatrix = [...this.state.matrix] 
         oldMatrix[i][j] = parseInt(value)
@@ -67,7 +73,7 @@ export default class MainComponent extends Component {
         imageform.append("image", this.state.image)
         imageform.append("matrix", this.state.matrix)
         imageform.append("size", this.state.gridSize)
-        imageform.append("mode",  "filter")
+        imageform.append("mode",  this.state.mode)
         this.setState({loading: true})
         console.log("Loading")
         const data  = await fetch("http://localhost:5000/upload", {

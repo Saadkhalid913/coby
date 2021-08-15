@@ -8,7 +8,7 @@ const ModeSelector = ({ onChange, options }) => {
     }
 
     return (
-        <select onChange={(e) => {console.log(e.target.value)}} className = "mode-selector-select">
+        <select onChange={(e) => {onChange(e.target.value)}} className = "mode-selector-select">
             {elements}
         </select>
     )

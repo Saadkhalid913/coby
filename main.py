@@ -19,27 +19,27 @@ CORS(app)
 @app.route("/upload", methods = ["POST"])
 @cross_origin()
 def upload():
-    try:
+    # try:
         shutil.rmtree("images")
         os.mkdir("images")
         matrix = parseMatrix(request)
         img = parseImage(request)
         mode = request.form["mode"].lower()
 
-        if mode == "conv":
+        if mode == "convolution":
             img = Convolution3D(img, matrix)
         elif mode == "filter":
             img = Filter3D(img, matrix)
-        elif mode == "grey":
+        elif mode == "greyscale":
             img = Greyscale(img)
         else:
             return Greyscale(img)
 
         imgpath = SaveImgFromArray(img)
         return send_file(imgpath, mimetype="image/png", download_name="result.png")
-    except Exception as ex:
-        print(ex)
-        return {"error": "There was an error"}
+    # except Exception as ex:
+    #     print(ex)
+    #     return {"error": "There was an error"}
 
     
 def parseMatrix(request):
