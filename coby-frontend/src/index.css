@@ -19,7 +19,6 @@
   flex-direction: row;
   width: 25%;
   margin-top: 2rem;
-  border: 1px solid black;
   justify-content: space-evenly;
   align-items: center;
   justify-content: center;
@@ -33,17 +32,17 @@
 
 .matrix-grid {
   display: grid;
-  height:50vh;
-  width:50vh;
+  height:52vh;
+  width:52vh;
   justify-self: center;
   margin: 1rem;
 }
+
 .matrix-grid-tile  {
   width: 100%;
   height: 100%;
-  border:2px solid black; 
   text-align: center;
-  font-size: 3rem;
+  font-size: 2.25rem;
 }
 
 
@@ -56,12 +55,6 @@
   justify-content: space-around;
   padding: 1rem;
   
-  border: 4px solid black;
-}
-
-.main-button-wrapper {
-  border: 2px solid rgb(255, 113, 137)
-
 }
 
 .main-component-wrapper {
@@ -70,7 +63,6 @@
   align-items: center;
   width: 100%;
   height: 80%;
-  border: 2px solid blue;
 
 }
 
@@ -89,13 +81,11 @@
 .img-box > img {
   max-width: 80%;
   max-height: 80%;
-  border: 1px solid black;
   margin: 2rem;
 
 }
 .img-box > input {
   align-self: flex-end;
-  border: 1px solid orange;
   transform: scale(1.25,1.25);
 }
 .img-box {
@@ -108,7 +98,22 @@
   padding: 1rem;
 }
 
+.mode-selector {
+  display: flex;
+  flex-direction: row;
+  width:50%;
+  align-items: center;
+  justify-content: space-between;
+}
 
+.mode-selector > select  {
+  height: 2rem;
+  border: none;
+  color: black;
+  background-color: #00CC99;
+  padding: 0.25rem;
+
+}
 .loading-box {
   display: flex;
   flex-direction: column;
@@ -131,4 +136,12 @@
   height: min(4rem, 36px);
   width: min(8rem, 72px);
   margin: 0.5rem;
+  background-color: #00CC99;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+}
+.btn:hover{
+  transition-duration: 150ms;
+  background-color: #2efcc8;
 }

@@ -26,7 +26,7 @@ export default class MainComponent extends Component {
                 <MatrixContext.Provider value={{ matrix: this.state.matrix, setMatrixValue:  this.setMatrixValue}}>
                     <div className = "main-content-wrapper">
                         <div className = "main-component-wrapper">
-                            <MatrixBox gridSize={this.state.gridSize} setGridSize ={this.setGridSize} onModeChange={this.onModeChange}/>
+                            <MatrixBox defaultMode = {this.state.mode} gridSize={this.state.gridSize} setGridSize ={this.setGridSize} onModeChange={this.onModeChange}/>
                             <ImageBox />
                         </div>
                        <div className = "main-button-wrapper">
