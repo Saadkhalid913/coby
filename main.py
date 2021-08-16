@@ -51,8 +51,8 @@ def parseMatrix(request):
 
 def parseImage(request):
     imageBytes = request.files["image"].read()
-    if len(imageBytes) > 1000000:
-        raise Exception
+    if len(imageBytes) > 10000000:
+        raise Exception()
     img = imgToArray(imageBytes)
     return img 
 
