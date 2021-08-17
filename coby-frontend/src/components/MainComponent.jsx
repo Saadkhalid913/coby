@@ -5,6 +5,10 @@ import MatrixContext from "../contexts/matrixContext"
 import ImageContext from "../contexts/imageContext"
 import LoadingIcon from "./LoadingIcon.gif"
 import Homepage from './HomePage'
+import { toast } from "react-toastify"
+
+toast.configure()
+
 export default class MainComponent extends Component {
     state = {
         gridSize: 2,
@@ -71,28 +75,33 @@ export default class MainComponent extends Component {
         if (!this.state.image) return 
 
         let imageform = new FormData()
+        
         imageform.append("image", this.state.image)
         imageform.append("matrix", this.state.matrix)
         imageform.append("size", this.state.gridSize)
         imageform.append("mode",  this.state.mode)
+
         this.setState({loading: true})
-        console.log("Loading")
-        const data  = await fetch("http://localhost:5000/upload", {
+        const data  = await fetch("/upload", {
             mode: "cors",
             method: "post",
             body: imageform
-        })
+        }).catch(err => toast.error("There was an error connecting to the server"))
+
+        if (data.status !== 200) return toast.error("There was an error")
+
+
+
         const data1 = JSON.parse(JSON.stringify(data))
         try {
             const body = await data1.json()
-            console.log(body)
         }
         catch(ex) {
             const imageData = await data.blob()
             this.setState({image: imageData})
         }
         this.setState({loading: false})
-        console.log("Done loading")
+
     }
 
     setImage = (image) => {

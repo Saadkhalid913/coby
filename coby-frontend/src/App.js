@@ -4,6 +4,8 @@ import MainComponent from "./components/MainComponent"
 import React from 'react';
 import Aboutpage from './components/Aboutpage';
 import { BrowserRouter, Route } from "react-router-dom"
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   return (
     <BrowserRouter>

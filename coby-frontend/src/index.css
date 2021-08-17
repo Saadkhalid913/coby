@@ -212,6 +212,7 @@
   display:flex;
   align-items: center;
   justify-content: center;
+
 }
 
 .main-content {
@@ -225,7 +226,7 @@
   margin-bottom: 3rem;
   text-align: left;
   width: 100%;
-
+  text-align: left;
 }
 .about-page-heading{
   font-size: 3rem;
@@ -235,4 +236,5 @@
 .about-page-paragraph {
   white-space: pre-wrap;
   font-size: 1.5rem;
+  text-align: justify;
 }
