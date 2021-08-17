@@ -4,7 +4,7 @@ import MatrixBox from './matrixBox'
 import MatrixContext from "../contexts/matrixContext"
 import ImageContext from "../contexts/imageContext"
 import LoadingIcon from "./LoadingIcon.gif"
-
+import Homepage from './HomePage'
 export default class MainComponent extends Component {
     state = {
         gridSize: 2,
@@ -24,6 +24,7 @@ export default class MainComponent extends Component {
         return (
             <ImageContext.Provider value={{src: this.state.image, setImage: this.setImage}}>
                 <MatrixContext.Provider value={{ matrix: this.state.matrix, setMatrixValue:  this.setMatrixValue}}>
+                    <Homepage/>
                     <div className = "main-content-wrapper">
                         <div className = "main-component-wrapper">
                             <MatrixBox defaultMode = {this.state.mode} gridSize={this.state.gridSize} setGridSize ={this.setGridSize} onModeChange={this.onModeChange}/>
