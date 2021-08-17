@@ -155,10 +155,11 @@
 
 .navbar {
   background-color: white;
-  height: 10%;
+  height: 10vh;
   width: 100%;
-  box-shadow: 0 2px 4px 1px grey;
+  box-shadow: 0 2px 8px 1px grey;
   padding-left: 3rem;
+  position: fixed;
 }
 
 .navbar-list {
@@ -190,13 +191,14 @@
 }
 
 .intro-page {
+  margin-top: 10vh;
+  background-image: url("./components/mainbackground.jpeg");
   width: 100%;
   height: 100%;
   display:flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-image: url("./components/mainbackground.jpeg");
 }
 
 
@@ -205,10 +207,32 @@
   font-size: 5rem;
   width: 90%;
   color:white;
-  
   vertical-align: center;
   text-align: center;
   display:flex;
   align-items: center;
   justify-content: center;
+}
+
+.main-content {
+  padding: 3rem; 
+  padding-top: 15vh;
+  height: 100vh;
+  width: 100%;
+}
+
+.main-content > div {
+  margin-bottom: 3rem;
+  text-align: left;
+  width: 100%;
+
+}
+.about-page-heading{
+  font-size: 3rem;
+  margin-bottom :1rem
+}
+
+.about-page-paragraph {
+  white-space: pre-wrap;
+  font-size: 1.5rem;
 }
