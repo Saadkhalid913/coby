@@ -1,7 +1,7 @@
 from io import BytesIO
 from flask import Flask, request, send_file
 import json
-
+#main
 from werkzeug.datastructures import FileStorage
 from utils import ParseReqBody
 from imageUtils import imgToArray
@@ -85,6 +85,8 @@ def parseImage(request):
         raise Exception()
     img = imgToArray(imageBytes)
     return img 
+
+
 
 if __name__ == "__main__":
     app.run()
