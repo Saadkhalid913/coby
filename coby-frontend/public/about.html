@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" href="%PUBLIC_URL%/cobyfavicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Coby</title>
     <style>
 
-   *{
-     box-sizing: border-box;
-     padding: 0;
-     margin:0;
-     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
-   }   
-        .navbar {
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+.navbar {
   background-color: white;
   height: 10vh;
   width: 100%;
@@ -72,7 +72,6 @@
   text-align: center;
   display:flex;
   align-items: center;
-  justify-content: center;
 
 }
 
@@ -81,60 +80,57 @@
   padding-top: 15vh;
   height: 100vh;
   width: 100%;
+  border: 1px solid black;
+
 }
 
 .main-content > div {
   margin-bottom: 3rem;
   text-align: left;
   width: 100%;
-  text-align: left;
+  
 }
 .about-page-heading{
-  font-size: 3rem;
-  margin-bottom :1rem
+    font-size: 3rem;
+    margin-bottom :1rem
 }
 
 .about-page-paragraph {
-  font-size: 1.5rem;
-  text-align: justify;
+    font-size: 1.5rem;
+    border: 1px solid black;
+    text-align: left;
+    padding: none;
 }
 
-
-
     </style>
-
 </head>
 <body>
     <div class = "navbar">
         <div class = "nav-img-wrapper">
             <a href = "/">
-            <img alt = "coby logo" src = "./static/media/cobylogo.48786a8b.png" />
+            <img alt = "coby logo" src = "./static/media/cobylogo.8faed73f.png" />
             </a>
         </div>
     </div>
-
-
-    <div class="main-content">
-      <div class="about-section">
-          <h2 class = "about-page-heading">About COBY</h2>
-          <p class = "about-page-paragraph">
+    <div className="main-content">
+      <div className="about-section">
+          <h2 className = "about-page-heading">About COBY</h2>
+          <p className = "about-page-paragraph">
           Coby is an online image editing/matrix convolution visualizer tool. It was created using React.js and the Flask framework for python 3. The tool allows you to be able to manipulate images quickly and reactively with matrices. The tool accepts JPEG and PNG images and returns uncompressed .PNG format files (This is done to preserve quality).
           </p>
       </div>
-      <div class="creator-section">
-      <h2 class = "about-page-heading">About the Creator</h2>
-      <p class="about-page-paragraph">
+      <div className="creator-section">
+      <h2 className = "about-page-heading">About the Creator</h2>
+      <p className="about-page-paragraph">
       My name is <a href= "https://saadkhalid.ca">Saad Khalid</a>, I'm a high school student interested in machine learning and computational image processing. I created this web app as a side project to better understand the steps taken by CNN's (Convolutional Neural Networks) to extract features from images. This project is open source and there is a public <a href ="https://github.com/Saadkhalid913/coby">GitHub</a> repository that you can fork or contribute to.
       </p>
       </div>
-      <div class="license-section">
-      <h2 class = "about-page-heading">License</h2>
-      <p class="about-page-paragraph">
+      <div className="license-section">
+      <h2 className = "about-page-heading">License</h2>
+      <p className="about-page-paragraph">
           This software is licensed under the <a href = "https://www.mit.edu/~amini/LICENSE.md">MIT licence</a> 
       </p>
       </div>
   </div>
-
-
 </body>
 </html>
