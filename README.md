@@ -22,5 +22,5 @@ An application to manipulate images on the web
  
  ## INFO 
  
- #### The blog post for this project can be found on ["my personal website]("https://saadlkhalid.ca/coby")
- #### The deployed version of this app can be found ["here"]("https://coby-app.herokuapp.com/")
+ #### The blog post for this project can be found on [my personal website](https://saadkhalid.ca/coby)
+ #### The deployed version of this app can be found [here](https://coby-app.herokuapp.com/)
