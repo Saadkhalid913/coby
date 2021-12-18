@@ -1,6 +1,6 @@
 # coby
 
-An application to manipulate images on the web 
+## A web app to visualize convolution on the fly! 
 
 # HOW TO INSTALL 
 
