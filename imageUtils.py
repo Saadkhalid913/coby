@@ -1,12 +1,9 @@
-import os
 import numpy as np
-from PIL import Image
 import random
 import cv2
-from io import BytesIO
-from tempfile import NamedTemporaryFile
-from shutil import copyfileobj 
-import math
+import matplotlib.pyplot as plt 
+import imageio
+from PIL import Image
 
 def SaveImgFromArray(img):
     # takes an image object and saves it to images folder with random hash as name
@@ -114,6 +111,8 @@ def Greyscale(img):
 #     return np.expand_dims(targetImage, axis=2)
 
 
+
+
 def Convolution(img: np.array, matrix: np.array, layer: int):
     # applys some matrix convolution to a given image layer and returns result
     n = len(matrix)
@@ -153,11 +152,6 @@ def Filter3D(img: np.array, matrix: np.array) -> np.array:
     return np.concatenate((R,G,B), axis=2)
 
 
-
-
-
-
-
 # These functions are experimental and do not work well
 
 
@@ -189,3 +183,32 @@ def CompressImage(img: np.array, factor: int):
     print(img.shape)
 
     return img
+
+def Convolve(image:np.array, kernel: np.array, stride:int = 1):
+  rows, cols, channels = image.shape
+  Krows, Kcols, Kdepth = kernel.shape
+  # scaleFactor = np.sum(kernel)
+  # scaleFactor = Krows * Kcols
+  scaleFactor = 1
+  TargetShape = (((rows - Krows) // stride) + 1, ((cols - Kcols) // stride + 1), channels)
+  target = np.zeros(TargetShape)
+
+  RowStart = Krows // 2  
+  ColStart = Kcols // 2  
+  tr = 0
+  for i in range(RowStart, rows - RowStart, stride):
+    tc = 0
+    for j in range(ColStart, cols - ColStart, stride):
+      ImageTarget = image[i - RowStart: i + RowStart + 1, j - ColStart: j + ColStart + 1]
+      PixelSum = np.sum(ImageTarget * kernel, axis = (0,1)) 
+      target[tr][tc] = PixelSum
+      tc +=1 
+    tr +=1 
+  return target / scaleFactor 
+
+if __name__ == "__main__":
+    img = imageio.imread("IMG_7180.JPG")
+    img = np.array(img)
+    kernel = np.array([[-1,-1,-1], [-1,8,-1], [-1,-1,-1]])
+    img = Convolve(img, kernel=np.expand_dims(kernel, axis = 2), stride=1)
+    SaveImgFromArray(img)

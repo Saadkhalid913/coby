@@ -1,11 +1,12 @@
 from io import BytesIO
+
 from flask import Flask, request, send_file
 import json
 #main
 from werkzeug.datastructures import FileStorage
 from utils import ParseReqBody
 from imageUtils import imgToArray
-from imageUtils import Convolution3D, SaveImgFromArray, Filter3D, Greyscale
+from imageUtils import Convolution3D, SaveImgFromArray, Filter3D, Greyscale, Convolve
 import numpy as np 
 import shutil
 import os 
@@ -27,7 +28,7 @@ def upload():
         mode = request.form["mode"].lower()
 
         if mode == "convolution":
-            img = Convolution3D(img, matrix)
+            img = Convolve(img, np.expand_dims(matrix, axis = 2))
         elif mode == "filter":
             img = Filter3D(img, matrix)
         elif mode == "greyscale":
