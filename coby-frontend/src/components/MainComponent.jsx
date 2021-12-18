@@ -20,7 +20,7 @@ export default class MainComponent extends Component {
     }
 
     componentDidMount() {
-        this.setGridSize(2)
+        this.setGridSize(3)
     }
 
     render() {
@@ -45,6 +45,7 @@ export default class MainComponent extends Component {
     }
 
     setGridSize = (gridSize) => {
+        if (!gridSize % 2|| gridSize < 1) return
         this.setState({gridSize})
         const matrix = this.createMatrixZeros(gridSize)
         this.setState({matrix})

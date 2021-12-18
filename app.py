@@ -66,6 +66,7 @@ def serveFiles(filename):
     if os.path.isfile(f"build/{filename}"):
         return send_file(f"build/{filename}")
     return ""
+@cross_origin()
 @app.route("/", methods = ["GET"])
 def serveHome():
     return send_file(f"build/index.html")
@@ -90,4 +91,4 @@ def parseImage(request):
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(port=3000)

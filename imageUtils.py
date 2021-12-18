@@ -185,6 +185,8 @@ def CompressImage(img: np.array, factor: int):
     return img
 
 def Convolve(image:np.array, kernel: np.array, stride:int = 1):
+  print("IMAGE: ", image.shape)
+  print("KERNEL: ", kernel.shape)
   rows, cols, channels = image.shape
   Krows, Kcols, Kdepth = kernel.shape
   # scaleFactor = np.sum(kernel)
@@ -207,7 +209,7 @@ def Convolve(image:np.array, kernel: np.array, stride:int = 1):
   return target / scaleFactor 
 
 if __name__ == "__main__":
-    img = imageio.imread("IMG_7180.JPG")
+    img = imageio.imread("download.jpeg")
     img = np.array(img)
     kernel = np.array([[-1,-1,-1], [-1,8,-1], [-1,-1,-1]])
     img = Convolve(img, kernel=np.expand_dims(kernel, axis = 2), stride=1)

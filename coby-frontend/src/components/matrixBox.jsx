@@ -8,7 +8,7 @@ const MatrixBox = ({ gridSize, setGridSize, onModeChange, defaultMode }) => {
         <ModeSelector defaultMode = {defaultMode} options = {["Convolution", "Greyscale", "Filter"]} onChange={(a) => onModeChange(a)}/>
         <Grid gridSize = {gridSize}/>
         <h2>{gridSize}x{gridSize}</h2>
-        <GridSelector onChange = {setGridSize} value = {gridSize} min = {2} max = {7}/>
+        <GridSelector onChange = {setGridSize} value = {gridSize} min = {1} max = {7}/>
     </div>
     )
 }

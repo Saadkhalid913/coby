@@ -2,9 +2,9 @@ import React, { useState, useEffect, useContext } from 'react'
 import MatrixContext from '../contexts/matrixContext'
 import GridTile from './gridTile'
 const Grid = ({ gridSize }) => {
-    const [size, setSize]= useState(2)
+    const [size, setSize]= useState(1)
     useEffect(() => {
-        setSize(gridSize || 2)
+        setSize(gridSize || 1)
     }, [gridSize])
 
     const {matrix} = useContext(MatrixContext)
